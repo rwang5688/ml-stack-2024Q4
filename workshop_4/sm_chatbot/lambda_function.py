@@ -36,22 +36,16 @@ def load_html():
     return html
 
 def chat(messages):
-    # bedrock converse invocation
-    #inference_config = {'temperature': 1.0, 'topP': 1.0, 'maxTokens': 1024}
-    #response = bedrock.converse(
-    #    modelId=model_id,
-    #    messages=messages,
-    #    inferenceConfig=inference_config
-    #)
-
-    # sagemaker endpoint invocation
+    # assemble sagemaker endpoint invocation parameters
     content_type = "application/json"
-    # use the last entry in the chat as inputs
+    # use the latest entry in the chat history as prompt
     inputs = messages[-1]['content'][-1]['text']
     print(inputs)
     data = {
        "inputs": inputs
     }
+
+    # invoke sagemaker endpoint
     response = sagemaker.invoke_endpoint(
         EndpointName=endpoint_name,
         ContentType=content_type,
@@ -63,13 +57,11 @@ def chat(messages):
     response_body_str = response["Body"].read().decode("utf-8")
     print(response_body_str)
     response_body = json.loads(response_body_str)
-    output = response_body[-1]['generated_text']
+
+    # assemble output
+    output = ''
+    for item in response_body:
+        output = output + item['generated_text'] + '\n'
     print(output)
-    
-    # bedrock converse response
-    #content = response['output']['message']['content']
-    #output = ''
-    #for item in content:
-    #    output = output + item['text'] + '\n'
     
     return output
