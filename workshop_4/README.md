@@ -1,5 +1,5 @@
 ## AWS Workshop 4 - App Development with API Gateway, Lambda, and SageMaker
 
-### Conversational Chatbot
+### SageMaker Invoke Endpoint API: SageMaker Chatbot
 
-See chatbot/README.md for deployment and test instructions.
+See sm_chatbot/README.md for deployment and test instructions.
