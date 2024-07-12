@@ -13,21 +13,21 @@ Deployment and Test instructions:
 - zip my_deployment_package.zip lambda_function.py
 - zip my_deployment_package.zip index.html
 
-4. Copy the deployment zip file to the SageMaker S3 bucket:
+4. Upload the deployment zip file to the SageMaker S3 bucket:
 
-- aws s3 cp my_deployment_package.zip s3://sagemaker-${AWS::Region}-${AWS:AccountId}/sm_chatbot/my_deployment_package.zip
+- aws s3 cp my_deployment_package.zip s3://sagemaker-${AWS::Region}-${AWS:AccountId}/sm_chatbot_yyyymmdd/my_deployment_package.zip
 
-5. Create and configure a Lambda function with latest Python runtime and name: `sm_chatbot`:
+5. Create and configure a Lambda function with latest Python runtime and name: `sm_chatbot_yyyymmdd`:
 
-- Navigate to Code > Upload from > S3 locatiohn.
+- Navigate to Code > Upload from > S3 location: S3 URI.
 - Enter S3 location for zip file.
 - Navigate to Configuration > General Configuration.
-- Set max values for timeout (15 minutes), memory (10240 MB), and ephemeral storage (10240 MB).
+- Set memory (10240 MB), ephemeral storage (10240 MB), max values for timeout (15 minutes). 
 - Navigate to Configuration > Permissions.
-- Navigate to Lambda function exeuction role.
+- Navigate to Lambda function execution role.
 - Add `AmazonSageMakerFullAccess` to Lambda function execution role.
 
-6. Create and configure an API Gateway REST API with name: `sm_chatbot`
+6. Create and configure an API Gateway REST API with name: `sm_chatbot_yyyymmdd`
 
 - Create an `ANY` method of Lambda function type.
 - Set Lambda proxy integration to `True`.

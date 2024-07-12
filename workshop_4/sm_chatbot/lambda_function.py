@@ -1,7 +1,7 @@
 import json
 import boto3
 
-endpoint_name = 'distilgpt2-pt-ep-2024-07-11-06-38-39'
+endpoint_name = '<SageMaker Inference Endpoint Name>'
 sagemaker = boto3.client(service_name='sagemaker-runtime')
 
 def lambda_handler(event, context):
