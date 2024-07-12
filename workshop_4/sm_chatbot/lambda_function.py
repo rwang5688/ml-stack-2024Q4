@@ -5,6 +5,7 @@ endpoint_name = '<SageMaker Inference Endpoint Name>'
 sagemaker = boto3.client(service_name='sagemaker-runtime')
 
 def lambda_handler(event, context):
+    print(event)
     if (event['httpMethod'] == 'GET'):
         output = load_html()
         return {
