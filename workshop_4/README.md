@@ -1,9 +1,17 @@
-## AWS Workshop 4 - App Development with API Gateway, Lambda, and SageMaker
+## AWS Workshop 4 - SageMaker Bring-Your-Own-Container Model Training and Bedrock Application Development
 
-### Deploy a Hugging Face Pretrained Model to Amazon SageMaker Serverless Endpoint - Boto3 (Mia Chang, pymia)
+### SageMaker Immersion Day: Bring-Your-Own-Container Model Training
 
-Notebook: https://github.com/aws/studio-lab-examples/blob/c154a9a009227c50e8af3be308fe475a7abd607f/connect-to-aws/Access_AWS_from_Studio_Lab_Deployment.ipynb
+Lab: https://catalog.us-east-1.prod.workshops.aws/workshops/63069e26-921c-4ce1-9cc7-dd882ff62575/en-US/lab3-bring-your-own-model/option2
 
-### SageMaker Invoke Endpoint API: SageMaker Chatbot
+### Amazon Bedrock Development Workshop: Conversational Chatbot [HTML + JavaScript + Bedrock Converse API]
 
-See sm_chatbot/README.md for deployment and test instructions.
+Lab: https://catalog.us-east-1.prod.workshops.aws/workshops/0b6e72fe-77ee-4777-98cc-237eec795fdb/en-US/fm/06-chatbot
+
+### Building with Amazon Bedrock: RAG Chatbot [Streamlit + Bedrock Converse API]
+
+Lab: https://catalog.workshops.aws/building-with-amazon-bedrock/en-US/intermediate/bedrock-rag-chatbot
+
+### Amazon Bedrock Workshop - Higher Education [Bedrock Agents and Knowledge Base]
+
+Workshop: https://catalog.us-east-1.prod.workshops.aws/workshops/3008d94a-eaf7-477f-8b70-bc694f3589fc/en-US

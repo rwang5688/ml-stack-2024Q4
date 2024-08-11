@@ -1,4 +1,4 @@
-### SageMaker Invoke Endpoint API: SageMaker Chatbot
+### SageMaker Invoke Endpoint API and Application Development: SageMaker Chatbot
 
 Deployment and Test instructions:
 
