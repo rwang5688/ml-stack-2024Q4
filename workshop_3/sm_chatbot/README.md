@@ -1,4 +1,4 @@
-### Application Development Example: SageMaker Chatbot
+### Application Development Lab: SageMaker Chatbot
 
 Deployment and Test instructions:
 
