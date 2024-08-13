@@ -1,4 +1,4 @@
-### SageMaker Invoke Endpoint API and Application Development: SageMaker Chatbot
+### Application Development Example: SageMaker Chatbot
 
 Deployment and Test instructions:
 
@@ -22,7 +22,7 @@ Deployment and Test instructions:
 - Navigate to Code > Upload from > S3 location: S3 URI.
 - Enter S3 location for zip file.
 - Navigate to Configuration > General Configuration.
-- Set memory (10240 MB), ephemeral storage (10240 MB), max values for timeout (15 minutes). 
+- Set memory (2048 MB), ephemeral storage (1024 MB), max value for timeout (1 minute). 
 - Navigate to Configuration > Permissions.
 - Navigate to Lambda function execution role.
 - Add `AmazonSageMakerFullAccess` to Lambda function execution role.
