@@ -27,11 +27,11 @@ Deployment and Test instructions:
 - Navigate to Lambda function execution role.
 - Add `AmazonSageMakerFullAccess` to Lambda function execution role.
 
-6. Create and configure an API Gateway REST API with name: `sm_chatbot_yyyymmdd`
+6. Create and configure an API Gateway REST API with name: `sm_chatbot_yyyymmdd` and Regional endpoint:
 
 - Create an `ANY` method of Lambda function type.
 - Set Lambda proxy integration to `True`.
-- Set Lambda function to the ARN of the `sm_chatbot` Lambda function.
+- Set Lambda function to the ARN of the `sm_chatbot_yyyymmdd` Lambda function.
 - Deploy the API with a new `demo` stage.:
 
 7. Copy and paste the `demo` stage invoke URL into the browser.
