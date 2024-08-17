@@ -8,7 +8,7 @@ Notes:
 
 Deployment and Test instructions:
 
-1. Create and configure a Lambda function: `sagemaker_chatbot_yyyymmdd`.
+1. Create a Lambda function: `sagemaker_chatbot_yyyymmdd`.
 
 - Navigate to Lambda functions console.
 - Click **Create function**.

@@ -4,7 +4,7 @@ Reference: https://catalog.us-east-1.prod.workshops.aws/workshops/0b6e72fe-77ee-
 
 Deployment and Test instructions:
 
-1. Create and configure a Lambda function: `bedrock_chatbot_yyyymmdd`.
+1. Create a Lambda function: `bedrock_chatbot_yyyymmdd`.
 
 - Navigate to Lambda functions console.
 - Click **Create function**.
