@@ -1,4 +1,4 @@
-### Bedrock Agents API: Amazon Bedrock (Agents and Knowledge Base) Workshop - Higher Education
+### Amazon Bedrock Workshop - Higher Education: Student Assistant Agent
 
 Workshop content: https://catalog.us-east-1.prod.workshops.aws/workshops/3008d94a-eaf7-477f-8b70-bc694f3589fc/en-US
 
@@ -26,7 +26,7 @@ Detailed Steps:
 
 - Make sure SageMaker Execution Role has sufficient access for:
   - Amazon Bedrock (bedrock:*)
-  - Amazon OpenSearch Service (aFoss:*)
+  - Amazon OpenSearch Service (aoss:*)
   - Amazon SageMaker (AmazonSageMakerFullAccess)
   - Amazon S3 (AmazonS3FullAccess)
   - AWS CloudFormation (AWSCloudFormationFullAccess)
