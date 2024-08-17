@@ -4,7 +4,7 @@ Workshop: https://catalog.workshops.aws/building-with-amazon-bedrock/en-US
 
 #### Prerequisites
 
-1. Create Python virtual environment.
+1. Create and activate Python virtual environment.
 
 - $ cd building_with_amazon_bedrock
 - $ python -m venv .venv
