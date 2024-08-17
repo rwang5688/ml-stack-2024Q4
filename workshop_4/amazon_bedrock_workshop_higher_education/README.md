@@ -1,6 +1,6 @@
 ### Amazon Bedrock Workshop - Higher Education: Student Assistant Agent
 
-Workshop content: https://catalog.us-east-1.prod.workshops.aws/workshops/3008d94a-eaf7-477f-8b70-bc694f3589fc/en-US
+Workshop: https://catalog.us-east-1.prod.workshops.aws/workshops/3008d94a-eaf7-477f-8b70-bc694f3589fc/en-US
 
 Deployment and Test instructions:
 
@@ -17,10 +17,10 @@ Detailed Steps:
 - Download source:
   - https://static.us-east-1.prod.workshops.aws/public/e54460c6-1688-421f-8800-4123d98f509a/static/workshop-labs.zip
 
-- IGNORE CloudFormation template: `Code/workshop-stack.yaml`.
+- **DO NOT DEPLOY** CloudFormation template: `Code/workshop-stack.yaml`.
   - This template deploys a SageMaker Domain, and then adds SageMaker Studio Classic app.  We do not want this app.
 
-- Deploy Cloudormation template: `Code/workshop-stack-s3-buckets.yaml`.
+- **DEPLOY** Cloudormation template: `Code/workshop-stack-s3-buckets.yaml`.
   - This template will create a bucket with name: `workshop-stack-s3-buckets-${AWS::AccountId}-bedrock-courses-cat`.
   - Plus this template will add three prefixes: `course-registration`, `course-reviews`, `knowledge-base`.
 
@@ -60,22 +60,15 @@ Detailed Steps:
 
 - When creating Course Review Action, make sure `Description` fields are NON-EMPTY for the Action Group and Lambda Function.  Or the creation may fail.
 
-- When updating Lambda function code, we must upload a zip file.  Copy and paste code, and clicking **Deploy** will result in failure.
+- Copy and paste code, click **Save**, and then click **Deploy**.
 
-- It is easiest to zip up the Python file (`courses-agent-group-courses-review.py`) into a zip file (`courses-agent-group-courses-review.zip`), and then upload the zip file.
-
-- Make sure to change the following:
-  - Under Code: Change the Lambda handler to `courses-agent-group-courses-review.lambda_handler`.
-  - Under Configuration > General Configuration: Change to max value timeout (15 minutes), memory (10240 MB), ephemeral storage (10240 MB).
+- Configure the Lambda function:
+  - Under Configuration > General Configuration: Change to max value timeout (1 minute).
   - Under Configuration > Permissions: Add to Lambda function execution role the custom inline policy:`dynamodb_lambda_permissions`.
   - In the `dynamodb_lambda_permissions` policy, make sure Resources statements have the correct ${AWS::AccountId}.
-  - UNder Configuration > Permissions: Add to `agentInvokeFunction`, Source ARN: <Bedrock Agent ARN> and Action: `lambda:invokeFunction`.
+  - Under Configuration > Permissions: Add to `agentInvokeFunction`, Source ARN: <Bedrock Agent ARN> and Action: `lambda:invokeFunction`.
 
-- In order to trigger another **Prepare** cycle, go through another **Edit in Agent Builder** and **Save and exit** cycle.
-
-- Prompt 2: `Show me reviews for CS 441 course` will fail to retrieve the course review because Lambda function will try to match `courseName` to `CS 441 Machine Learning`.
-
-- Change Prompt 2 to: `Show me reviews for course CS 441`, and Course Review Agent will retrieve the appropriate course review.
+- In order to trigger another **Prepare** cycle, go through another **Edit in Agent Builder** and **Save and exit** sequence.
 
 6. Add Course Registration Action to Agent
 
@@ -83,18 +76,15 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/3008d94a-eaf7-477f-8b70-b
 
 Detailed Steps:
 
-- When updating Lambda function code, we must upload a zip file.  Copy and paste code, and clicking **Deploy** will result in failure.
+- Copy and paste code, click **Save**, and then click **Deploy**.
 
-- It is easiest to zip up the Python file (`courses-agent-group-courses-registration.py`) into a zip file (`courses-agent-group-courses-registration.zip`), and then upload the zip file.
-
-- Make sure to change the following:
-  - Under Code: Change the Lambda handler to `courses-agent-group-courses-registration.lambda_handler`.
-  - Under Configuration > General Configuration: Change to max value timeout (15 minutes), memory (10240 MB), ephemeral storage (10240 MB).
+- Configure the Lambda function:
+  - Under Configuration > General Configuration: Change to max value timeout (1 minute).
   - Under Configuration > Permissions: Add to Lambda function execution role the custom inline policy:`dynamodb_lambda_permissions`.
   - In the `dynamodb_lambda_permissions` policy, make sure Resources statements have the correct ${AWS::AccountId}.
   - UNder Configuration > Permissions: Add to `agentInvokeFunction`, Source ARN: <Bedrock Agent ARN> and Action: `lambda:invokeFunction`.
 
-- In order to trigger another **Prepare** cycle, go through another **Edit in Agent Builder** and **Save and exit** cycle.
+- In order to trigger another **Prepare** cycle, go through another **Edit in Agent Builder** and **Save and exit** sequence.
 
 7. Create, test, and add Guardrails to Agent
 
