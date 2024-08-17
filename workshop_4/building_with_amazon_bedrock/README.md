@@ -2,10 +2,45 @@
 
 Workshop: https://catalog.workshops.aws/building-with-amazon-bedrock/en-US
 
-Code: https://static.us-east-1.prod.workshops.aws/public/5dd5dc48-363d-4c69-9007-9e5528c5c31f/assets/workshop.zip
+#### Prerequisites
+
+1. Create Python virtual environment.
+
+- $ cd building_with_amazon_bedrock
+- $ python -m venv .venv
+- Linux:
+- $ source .venv/bin/activate
+- Windows:
+- $ source .venv/Scripts/activate
+
+2. Install dependencies.
+
+- $ cd building_with_amazon_bedrock
+- $ pip install -r setup/requirements.txt
+
+3. Populate Chroma DB data collections for RAG Chatbot.
+
+- $ cd building_with_amazon_bedrock/data
+- $ python populate_collection.py
+
+#### Retrieval Augmented Generation (RAG) Chatbot
 
 Lab: https://catalog.workshops.aws/building-with-amazon-bedrock/en-US/intermediate/bedrock-rag-chatbot
 
-RAG Chatbot: building_with_amazon_bedrock/completed/rag_chatbot
+Code: building_with_amazon_bedrock/completed/rag_chatbot
 
-Document Summarization: building_with_amazon_bedrock/completed/summarization
+- $ cd building_with_amazon_bedrock/completed/rag_chatbot
+- $ ./run_rag_chatbot_app.sh
+- Linux (Cloud9): Preview application.
+- Windows: Use web browser to visit localhost URL.
+
+#### Document Summarization
+
+Lab: https://catalog.workshops.aws/building-with-amazon-bedrock/en-US/intermediate/bedrock-summarization
+
+Code: building_with_amazon_bedrock/completed/summarization
+
+- $ cd building_with_amazon_bedrock/completed/summarization
+- $ ./run_summarization_app.sh
+- Linux (Cloud9): Preview application.
+- Windows: Use web browser to visit localhost URL.

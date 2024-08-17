@@ -1,38 +1,78 @@
-### Application Development Lab: SageMaker Chatbot
+### SageMaker Application Development: SageMaker Chatbot
+
+Reference: https://catalog.us-east-1.prod.workshops.aws/workshops/0b6e72fe-77ee-4777-98cc-237eec795fdb/en-US/fm/06-chatbot
+
+Notes:
+- Reference is for a Bedrock Chatbot.
+- We changed the Lambda function code to invoke a SageMaker Inference Endpoint for DistilGPT2 for text generation task.
 
 Deployment and Test instructions:
 
-1. Confirm there is a SageMaker S3 bucket with name: `sagemaker-${AWS::Region}-${AWS::AccountId}`.
+1. Create and configure a Lambda function: `sagemaker_chatbot_yyyymmdd`.
 
-2. Install zip:
-   
-- sudo apt install zip
-  
-3. From the `sm_chatbot` directory, add files to the deployment zip file: `my_deployment_package.zip`:
-   
-- zip my_deployment_package.zip lambda_function.py
-- zip my_deployment_package.zip index.html
+- Navigate to Lambda functions console.
+- Click **Create function**.
+- Set Function name: `sagemaker_chatbot_yyyymmdd` and Runtime: Latest Python runtime.
+- Note: Runtime must be at or beyond the Python version of the Deep Learning Container Image.
+- Click **Create function**.
 
-4. Upload the deployment zip file to the SageMaker S3 bucket:
+2. Add and deploy code for the Lambda function: `sagemaker_chatbot_yyyymmdd`.
 
-- aws s3 cp my_deployment_package.zip s3://sagemaker-${AWS::Region}-${AWS:AccountId}/sm_chatbot_yyyymmdd/my_deployment_package.zip
+- Nvigate to Code.
+- Copy and paste contents of repo's `lambda_function.py` to file `lambda_function.py`.
+- Replace <SageMaker Inference Endpoint Name> with the actual SageMaker Inference Endpoint Name, e.g., distilgpt2-pt-ep-yyyy-mm-dd-hh-mm-ss.
+- Click **File > Save**.
+- Create a new file: `index.html`.
+- Copy and paste contents of repo's `index.html` to file `index.html`.
+- Click **File > Save**.
+- Click **Deploy**.
 
-5. Create and configure a Lambda function with latest Python runtime and name: `sm_chatbot_yyyymmdd`:
+3. Configure the Lambda function: `sagemaker_chatbot_yyyymmdd`.
 
-- Navigate to Code > Upload from > S3 location: S3 URI.
-- Enter S3 location for zip file.
 - Navigate to Configuration > General Configuration.
-- Set memory (2048 MB), ephemeral storage (1024 MB), max value for timeout (1 minute). 
+- Click **Edit**.  Set timeout to 1 minute (60 seconds). Click **Save**.
 - Navigate to Configuration > Permissions.
-- Navigate to Lambda function execution role.
-- Add `AmazonSageMakerFullAccess` to Lambda function execution role.
+- Navigate to the Lambda function's exeuction role.
+- Click **Add permissions > Attach policies**.
+- Add `AmazonSageMakerFullAccess`.
+- Click **Add permissions**.
+- Navigate back to and refresh the Lambda function's Configuration > Permissions page.
+- Confirm the Lambda function's execution role has the newly added permissions.
 
-6. Create and configure an API Gateway REST API with name: `sm_chatbot_yyyymmdd` and Regional endpoint:
+4. Test the Lambda function: `sagemaker_chatbot_yyyymmdd`.
 
-- Create an `ANY` method of Lambda function type.
-- Set Lambda proxy integration to `True`.
-- Set Lambda function to the ARN of the `sm_chatbot_yyyymmdd` Lambda function.
-- Deploy the API with a new `demo` stage.:
+- Navigate to Test.
+- Select `Create new event`.
+- Set Event name: `test`.
+- Copy and paste contents of repo's `test_event.json` to Event JSON.
+- Click **Save**.
+- Click **Test**.
+- Confirm Lambda function executes successfully.
 
-7. Copy and paste the `demo` stage invoke URL into the browser.
+5. Create and configure an API Gateway REST API with name: `sagemaker_chatbot_yyyymmdd` and stage: `demo`.
 
+- Navigate to API Gateway APIs console.
+- Click **Create API**.
+- Click `REST API`.
+- Click **Build**.
+- Select `New API`.
+- Set API Name: `sagemaker_chatbot_yyyymmdd` and API endpoint type: `Regional` (default).
+- Click **Create API**.
+- Navigate to Resources.
+- Click **Create method**.
+- Set Method type: `ANY`, Integration type: `Lambda function`, and Lambda proxy integration: `True`.
+- Set Lambda function: ARN of the `sagemaker_chatbot_yyyymmdd` Lambda function.
+- Click **Create method**.
+- Click **Deploy API**.
+- Set Stage: `*New stage*` and Stage name: `demo`.
+- Click **Deploy**.
+
+6. Test Bedrock Chatbot: `sagemaker_chatbot_yyyymmdd`.
+
+- Copy `demo` stage's Invoke URL: `https://<api id>.execute-api.us-west-2.amazonaws.com/demo`
+- Open new web browser tab.
+- Past `demo` stage's Invoke URL.
+- Wait for SageMaker Chatbot page to appear.
+- Enter prompt, e.g., `How are you?`
+- Click **Send**.
+- Wait for response to appear.
