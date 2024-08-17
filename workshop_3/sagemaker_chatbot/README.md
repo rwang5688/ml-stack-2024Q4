@@ -67,7 +67,7 @@ Deployment and Test instructions:
 - Set Stage: `*New stage*` and Stage name: `demo`.
 - Click **Deploy**.
 
-6. Test Bedrock Chatbot: `sagemaker_chatbot_yyyymmdd`.
+6. Test SageMaker Chatbot: `sagemaker_chatbot_yyyymmdd`.
 
 - Copy `demo` stage's Invoke URL: `https://<api id>.execute-api.us-west-2.amazonaws.com/demo`
 - Open new web browser tab.
