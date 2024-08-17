@@ -1,4 +1,4 @@
-### Application Development Lab: SageMaker Chatbot
+### SageMaker Application Development: SageMaker Chatbot
 
 Reference: https://catalog.us-east-1.prod.workshops.aws/workshops/0b6e72fe-77ee-4777-98cc-237eec795fdb/en-US/fm/06-chatbot
 
