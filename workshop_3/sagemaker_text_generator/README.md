@@ -67,12 +67,12 @@ Deployment and Test instructions:
 - Set Stage: `*New stage*` and Stage name: `demo`.
 - Click **Deploy**.
 
-6. Test SageMaker Chatbot: `sagemaker_text_generator_yyyymmdd`.
+6. Test SageMaker Text Generator: `sagemaker_text_generator_yyyymmdd`.
 
 - Copy `demo` stage's Invoke URL: `https://<api id>.execute-api.us-west-2.amazonaws.com/demo`
 - Open new web browser tab.
 - Past `demo` stage's Invoke URL.
-- Wait for SageMaker Chatbot page to appear.
+- Wait for SageMaker Text Generator page to appear.
 - Enter prompt, e.g., `How are you?`
 - Click **Send**.
 - Wait for response to appear.
