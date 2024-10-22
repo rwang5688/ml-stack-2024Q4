@@ -1,4 +1,4 @@
-### SageMaker Application Development: SageMaker Chatbot
+### SageMaker Application Development: SageMaker Text Generator
 
 Reference: https://catalog.us-east-1.prod.workshops.aws/workshops/0b6e72fe-77ee-4777-98cc-237eec795fdb/en-US/fm/06-chatbot
 
@@ -8,15 +8,15 @@ Notes:
 
 Deployment and Test instructions:
 
-1. Create a Lambda function: `sagemaker_chatbot_yyyymmdd`.
+1. Create a Lambda function: `sagemaker_text_generator_yyyymmdd`.
 
 - Navigate to Lambda functions console.
 - Click **Create function**.
-- Set Function name: `sagemaker_chatbot_yyyymmdd` and Runtime: Latest Python runtime.
+- Set Function name: `sagemaker_text_generator_yyyymmdd` and Runtime: Latest Python runtime.
 - Note: Runtime must be at or beyond the Python version of the Deep Learning Container Image.
 - Click **Create function**.
 
-2. Add and deploy code for the Lambda function: `sagemaker_chatbot_yyyymmdd`.
+2. Add and deploy code for the Lambda function: `sagemaker_text_generator_yyyymmdd`.
 
 - Nvigate to Code.
 - Copy and paste contents of repo's `lambda_function.py` to file `lambda_function.py`.
@@ -27,7 +27,7 @@ Deployment and Test instructions:
 - Click **File > Save**.
 - Click **Deploy**.
 
-3. Configure the Lambda function: `sagemaker_chatbot_yyyymmdd`.
+3. Configure the Lambda function: `sagemaker_text_generator_yyyymmdd`.
 
 - Navigate to Configuration > General Configuration.
 - Click **Edit**.  Set timeout to 1 minute (60 seconds). Click **Save**.
@@ -39,7 +39,7 @@ Deployment and Test instructions:
 - Navigate back to and refresh the Lambda function's Configuration > Permissions page.
 - Confirm the Lambda function's execution role has the newly added permissions.
 
-4. Test the Lambda function: `sagemaker_chatbot_yyyymmdd`.
+4. Test the Lambda function: `sagemaker_text_generator_yyyymmdd`.
 
 - Navigate to Test.
 - Select `Create new event`.
@@ -49,25 +49,25 @@ Deployment and Test instructions:
 - Click **Test**.
 - Confirm Lambda function executes successfully.
 
-5. Create and configure an API Gateway REST API with name: `sagemaker_chatbot_yyyymmdd` and stage: `demo`.
+5. Create and configure an API Gateway REST API with name: `sagemaker_text_generator_yyyymmdd` and stage: `demo`.
 
 - Navigate to API Gateway APIs console.
 - Click **Create API**.
 - Click `REST API`.
 - Click **Build**.
 - Select `New API`.
-- Set API Name: `sagemaker_chatbot_yyyymmdd` and API endpoint type: `Regional` (default).
+- Set API Name: `sagemaker_text_generator_yyyymmdd` and API endpoint type: `Regional` (default).
 - Click **Create API**.
 - Navigate to Resources.
 - Click **Create method**.
 - Set Method type: `ANY`, Integration type: `Lambda function`, and Lambda proxy integration: `True`.
-- Set Lambda function: ARN of the `sagemaker_chatbot_yyyymmdd` Lambda function.
+- Set Lambda function: ARN of the `sagemaker_text_generator_yyyymmdd` Lambda function.
 - Click **Create method**.
 - Click **Deploy API**.
 - Set Stage: `*New stage*` and Stage name: `demo`.
 - Click **Deploy**.
 
-6. Test SageMaker Chatbot: `sagemaker_chatbot_yyyymmdd`.
+6. Test SageMaker Chatbot: `sagemaker_text_generator_yyyymmdd`.
 
 - Copy `demo` stage's Invoke URL: `https://<api id>.execute-api.us-west-2.amazonaws.com/demo`
 - Open new web browser tab.
